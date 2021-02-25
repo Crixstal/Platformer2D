@@ -5,7 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Rigidbody rb;
-    private float speed = 10.0f;
+    private float moveSpeed = 10.0f;
+    private bool isJumping = false;
+    private int Ground = 10;
     [SerializeField]
     private uint life = 5;
 
@@ -13,6 +15,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,13 +31,12 @@ public class Player : MonoBehaviour
     private void Move()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
-
         float jumpInput = Input.GetAxis("Jump");
 
-        if (jumpInput > 0)
-            rb.AddForce(new Vector3(0, 1, 0) * speed, ForceMode.Impulse);
+        if (jumpInput > 0 && isJumping == false)
+            rb.AddForce(new Vector3(0, 1, 0) * 1.0f, ForceMode.Impulse);
 
-        transform.Translate(new Vector3(horizontalInput, 0.0f, 0.0f) * speed * Time.deltaTime);
+        transform.Translate(new Vector3(horizontalInput, 0.0f, 0.0f) * moveSpeed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -48,12 +50,18 @@ public class Player : MonoBehaviour
         }
 
         if (collision.gameObject.tag == "MovingPlatform")
-            transform.SetParent(collision.transform); 
-    }
+            transform.SetParent(collision.transform);
+
+        if (collision.gameObject.layer == Ground)
+            isJumping = false;
+    }   
 
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.tag == "MovingPlatform")
             transform.SetParent(null);
+
+        if (collision.gameObject.layer == Ground)
+            isJumping = true;
     }
 }
