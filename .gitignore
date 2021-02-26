@@ -2,7 +2,6 @@ Platformer2D/[Ll]ibrary/
 Platformer2D/[Tt]emp/
 Platformer2D/[Oo]bj/
 Platformer2D/[Bb]uild/
-Platformer2D/[Bb]uilds/
 Platformer2D/[Ll]ogs/
 Platformer2D/[Pp]ackages
 
@@ -16,6 +15,8 @@ Platformer2D/[Aa]ssets/Sounds/
 Platformer2D/[Aa]ssets/Textures/
 Platformer2D/[Aa]ssets/Animations/
 Platformer2D/[Aa]ssets/Materials/
+Platformer2D/[Aa]ssets/Prefabs/
+Platformer2D/[Aa]ssets/Images/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !Platformer2D/[Aa]ssets/**/*.meta
