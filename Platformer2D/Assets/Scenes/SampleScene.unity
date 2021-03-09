@@ -1035,8 +1035,8 @@ GameObject:
   - component: {fileID: 1380567106}
   - component: {fileID: 1380567105}
   m_Layer: 0
-  m_Name: Void
-  m_TagString: Enemy
+  m_Name: KillZone
+  m_TagString: KillZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1080,8 +1080,9 @@ GameObject:
   - component: {fileID: 1582181769}
   - component: {fileID: 1582181768}
   - component: {fileID: 1582181767}
+  - component: {fileID: 1582181771}
   m_Layer: 0
-  m_Name: Obstacle1
+  m_Name: Enemy1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1155,12 +1156,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582181766}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.16, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0.94589406}
+  m_LocalPosition: {x: -10.16, y: 0.44, z: 0}
+  m_LocalScale: {x: 1, y: 0.8741749, z: 0.94589406}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1582181771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582181766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 565f205ef5bf92d40b1ec2b3accf4c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 8
 --- !u!1 &1672694256
 GameObject:
   m_ObjectHideFlags: 0
@@ -1289,6 +1303,7 @@ MonoBehaviour:
   moveSpeed: 8
   jumpForce: 6
   life: 5
+  point: 0
   checkpointPos: {x: 0, y: 0, z: 0}
 --- !u!4 &1857694691
 Transform:

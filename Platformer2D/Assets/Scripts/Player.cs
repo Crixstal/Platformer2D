@@ -13,8 +13,10 @@ public class Player : MonoBehaviour
     private bool isJumping;
     [SerializeField]
     private int life = 5;
+    Vector3 velocity;
+    [SerializeField]
+    private int point = 0;
     public Vector3 checkpointPos;
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -41,22 +43,24 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Vector3 velocity = collision.relativeVelocity.normalized;
-            
-            if (velocity.y > 0.0)
-            {
-                ++life;
-                //add point ?
-            }
+            if (collision.GetContact(0).normal == new Vector3(0f, 1f, 0f))
+                ++point;
+
             else
             {
                 --life;
-                //transform.position = new Vector3(checkpointPos.x, checkpointPos.y, transform.position.z);
+                transform.position = new Vector3(checkpointPos.x, checkpointPos.y, transform.position.z);
             }
         }
 
+        if (collision.gameObject.tag == "KillZone")
+        {
+            --life;
+            transform.position = new Vector3(checkpointPos.x, checkpointPos.y, transform.position.z);
+        }
+   
         if (collision.gameObject.tag == "MovingPlatform")
-            transform.SetParent(collision.transform);
+        transform.SetParent(collision.transform);
     }
 
     private void OnCollisionStay(Collision collision)
