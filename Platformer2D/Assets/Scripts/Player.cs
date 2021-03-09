@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -41,15 +42,17 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             Vector3 velocity = collision.relativeVelocity.normalized;
-        }
-
-        if (collision.gameObject.tag == "Enemy")
-        {
-            --life;
-
-            transform.position = new Vector3(checkpointPos.x, checkpointPos.y, transform.position.z);
-
-            //if (life <= 0)
+            
+            if (velocity.y > 0.0)
+            {
+                ++life;
+                //add point ?
+            }
+            else
+            {
+                --life;
+                //transform.position = new Vector3(checkpointPos.x, checkpointPos.y, transform.position.z);
+            }
         }
 
         if (collision.gameObject.tag == "MovingPlatform")

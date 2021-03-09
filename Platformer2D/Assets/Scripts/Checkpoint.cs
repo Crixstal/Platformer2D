@@ -5,13 +5,14 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     [SerializeField]
-    private MeshRenderer flag;
-    private Material cyan;
+    private Renderer flag;
+    private Material mat;
 
     void Awake()
     {
-        flag = GetComponent<MeshRenderer>();
-        cyan.color = Color.cyan;
+        flag = GetComponent<Renderer>();
+        mat = GetComponent<Renderer>().material;
+        mat.color = Color.yellow;
     }
 
     public void OnTriggerEnter(Collider other)
@@ -19,7 +20,8 @@ public class Checkpoint : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             other.GetComponent<Player>().checkpointPos = transform.position;
-            flag.material = cyan;
+            mat.color = Color.cyan;
+            flag.GetComponent<Renderer>().material = mat;
         }
     }
 }
