@@ -12,19 +12,13 @@ public class Player : MonoBehaviour
     private bool isJumping;
     [SerializeField]
     private int life = 5;
+    public Vector3 checkpointPos;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
         Move();
@@ -53,7 +47,7 @@ public class Player : MonoBehaviour
         {
             --life;
 
-            transform.position = new Vector3(GameObject.FindWithTag("Checkpoint").transform.position.x, 0, 0);
+            transform.position = new Vector3(checkpointPos.x, checkpointPos.y, transform.position.z);
 
             //if (life <= 0)
         }

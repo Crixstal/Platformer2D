@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
     private float camera_posZ;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         camera_posY = myCamera.transform.position.y;
         camera_posZ = myCamera.transform.position.z;
