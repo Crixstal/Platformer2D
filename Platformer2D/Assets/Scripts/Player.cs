@@ -38,6 +38,14 @@ public class Player : MonoBehaviour
             rb.AddForce(new Vector3(0.0f, 1.0f, 0.0f) * jumpForce, ForceMode.Impulse);
     }
 
+    public bool isAlive()
+    {
+        if (life <= 0)
+            return false;
+
+        return true;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Enemy")

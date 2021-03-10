@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class AnimPlayer : MonoBehaviour
 {
+    [SerializeField]
     private Animator anim;
-
-    private void Awake()
-    {
-        anim = GetComponent<Animator>();
-    }
 
     void Update()
     {
         anim.SetBool("isRunning", false);
-        anim.SetBool("isJumping", false);
 
         if (Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Horizontal") < 0)
             anim.SetBool("isRunning", true);
+    }
 
-        if (Input.GetAxis("Jump") > 0)
-            anim.SetBool("isJumping", true);
+    private void OnCollisionStay(Collision collision)
+    {
+        anim.SetBool("isJumping", false);
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        anim.SetBool("isJumping", true);
     }
 }
