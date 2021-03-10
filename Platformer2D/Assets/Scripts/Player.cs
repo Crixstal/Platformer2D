@@ -11,12 +11,11 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float jumpForce = 6.0f;
     private bool isJumping;
-    [SerializeField]
-    private int life = 5;
+    public int life = 5;
     Vector3 velocity;
-    [SerializeField]
-    private int point = 0;
+    public int score = 0;
     public Vector3 checkpointPos;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -44,7 +43,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             if (collision.GetContact(0).normal == new Vector3(0f, 1f, 0f))
-                ++point;
+                ++score;
 
             else
             {
@@ -58,9 +57,9 @@ public class Player : MonoBehaviour
             --life;
             transform.position = new Vector3(checkpointPos.x, checkpointPos.y, transform.position.z);
         }
-   
+
         if (collision.gameObject.tag == "MovingPlatform")
-        transform.SetParent(collision.transform);
+            transform.SetParent(collision.transform);
     }
 
     private void OnCollisionStay(Collision collision)
