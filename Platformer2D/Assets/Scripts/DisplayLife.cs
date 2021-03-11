@@ -5,8 +5,8 @@ using UnityEngine;
 public class DisplayLife : MonoBehaviour
 {
     [SerializeField]
-    Player player;
-    TMPro.TMP_Text text;
+    private Player player = null;
+    private TMPro.TMP_Text text;
 
     void Awake()
     {

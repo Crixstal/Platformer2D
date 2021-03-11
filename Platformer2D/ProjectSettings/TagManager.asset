@@ -8,6 +8,8 @@ TagManager:
   - MovingPlatform
   - KillZone
   - Ground
+  - Point
+  - Heart
   layers:
   - Default
   - TransparentFX
@@ -17,8 +19,8 @@ TagManager:
   - UI
   - 
   - 
-  - Player
-  - Enemy
+  - 
+  - 
   - 
   - 
   - 

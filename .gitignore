@@ -31,6 +31,7 @@ Platformer2D/[Aa]ssets/Plugins/Editor/JetBrains*
 
 # Visual Studio cache directory
 .vs/
+.vsconfig
 
 # Gradle cache directory
 .gradle/

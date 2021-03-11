@@ -5,7 +5,7 @@ using UnityEngine;
 public class AnimPlayer : MonoBehaviour
 {
     [SerializeField]
-    private Animator anim;
+    private Animator anim = null;
 
     void Update()
     {

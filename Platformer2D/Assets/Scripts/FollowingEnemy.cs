@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour
+public class FollowingEnemy : MonoBehaviour
 {
-    public Transform player;
-    private Rigidbody rb;
     [SerializeField]
-    private float force = 5.0f;
+    private Transform player = null;
+    [SerializeField]
+    private float force = 6f;
+    private Rigidbody rb;
 
     private void Awake()
     {
@@ -27,12 +27,6 @@ public class Enemy : MonoBehaviour
     private void OnTriggerStay(Collider collision)
     {
         if (collision.gameObject.tag == "Player")
-        {
-            transform.LookAt(player);
-
-            //transform.position = Vector3.MoveTowards(transform.position, player.position, force * Time.deltaTime);
-            rb.AddForce(-player.position * force, ForceMode.Impulse);
-        }
-
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.position.x, transform.position.y, 0), force * Time.deltaTime);
     }
 }

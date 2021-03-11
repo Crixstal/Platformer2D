@@ -5,12 +5,12 @@ using UnityEngine;
 public class CanvasManagement : MonoBehaviour
 {
     [SerializeField]
-    private GameObject HUD;
+    private GameObject HUD = null;
     [SerializeField]
-    private GameObject GameOver;
+    private GameObject GameOver = null;
     private bool playerIsAlive;
     [SerializeField]
-    Player player;
+    private Player player = null;
 
     void Awake()
     {

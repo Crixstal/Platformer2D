@@ -7,9 +7,9 @@ public class Player : MonoBehaviour
 {
     private Rigidbody rb;
     [SerializeField]
-    private float moveSpeed = 8.0f;
+    private float moveSpeed = 8f;
     [SerializeField]
-    private float jumpForce = 6.0f;
+    private float jumpForce = 6f;
     private bool isJumping;
     public int life = 5;
     Vector3 velocity;
@@ -68,6 +68,18 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject.tag == "MovingPlatform")
             transform.SetParent(collision.transform);
+
+        if (collision.gameObject.tag == "Point")
+        {
+            ++score;
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "Heart")
+        {
+            ++life;
+            Destroy(collision.gameObject);
+        }
     }
 
     private void OnCollisionStay(Collision collision)
