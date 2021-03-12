@@ -9,30 +9,28 @@ public class Boss : MonoBehaviour
     [SerializeField]
     private float speed = 3f;
     private float distance;
+    private float startTimer;
+    [SerializeField]
+    private float duration = 1f;
+    [SerializeField]
+    private float repulseForce = 10f;
     [SerializeField]
     private Transform start = null;
     [SerializeField]
     private Transform end = null;
-    private bool isShooting;
-    
     [SerializeField]
-    private GameObject bullet;
-    private float startTimer;
+    private GameObject bullet = null;
     [SerializeField]
-    private float duration = 5f;
-    [SerializeField]
-    private Transform player = null;
-    [SerializeField]
+    private Rigidbody player = null;
 
     void Awake()
     {
-        bullet.transform.position = new Vector3(transform.position.x, bullet.transform.position.y, 0);
         startTimer = duration;
     }
 
     void Update()
     {
-        //Move();
+        Move();
         Life();
     }
 
@@ -44,20 +42,22 @@ public class Boss : MonoBehaviour
 
     private void Shoot()
     {
-        //if (isShooting)
-        //    transform.GetChild(11).gameObject.SetActive(false);
-        //else
-        //    transform.GetChild(11).gameObject.SetActive(true);
 
         if (startTimer > 0)
             startTimer -= Time.deltaTime;
         else
         {
             startTimer = duration;
+            bullet.transform.position = new Vector3(transform.position.x, bullet.transform.position.y, 0);
             Instantiate(bullet);
-            bullet.GetComponent<Bullet>().direction = Vector3.Normalize(player.position - bullet.transform.position);
-            isShooting = true;
         }      
+        
+        bullet.GetComponent<Bullet>().direction = Vector3.Normalize(player.position - bullet.transform.position);
+        
+        if (bullet.GetComponent<Bullet>().isDestroyed)
+            transform.GetChild(11).gameObject.SetActive(true);
+        else
+            transform.GetChild(11).gameObject.SetActive(false);
     }
 
     private void Life()
@@ -92,9 +92,12 @@ public class Boss : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-            {
+        {
             if (collision.GetContact(0).normal == new Vector3(0f, -1f, 0f))
+            {
                 --life;
+                player.AddForce(new Vector3(1.0f, 0.5f, 0.0f) * repulseForce, ForceMode.Impulse);
+            }
         }
     }
 

@@ -14,6 +14,12 @@ public class Player : MonoBehaviour
     private float jumpForce = 6f;
     private bool isJumping;
     public Vector3 checkpointPos;
+    [SerializeField]
+    private AudioSource error = null;
+    [SerializeField]
+    private AudioSource heart = null;
+    [SerializeField]
+    private AudioSource point = null;
 
     private void Awake()
     {
@@ -50,7 +56,10 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             if (collision.GetContact(0).normal == new Vector3(0f, 1f, 0f))
+            {
+                error.Play();
                 ++score;
+            }
 
             else
             {
@@ -59,17 +68,16 @@ public class Player : MonoBehaviour
             }
         }
 
-        /*if (collision.gameObject.CompareTag("Boss")
+        if (collision.gameObject.CompareTag("Boss"))
         {
-            if (collision.GetContact(0).normal == new Vector3(0f, 1f, 0f))
-                transform.position = new Vector3(checkpointPos.x, checkpointPos.y, transform.position.z);
-
-            else
-            {
+            if (collision.GetContact(0).normal != new Vector3(0f, 1f, 0f))
+            { 
                 --life;
                 transform.position = new Vector3(checkpointPos.x, checkpointPos.y, transform.position.z);
             }
-        }*/
+            else
+                error.Play();
+        }
 
         if (collision.gameObject.CompareTag("KillZone"))
         {
@@ -83,12 +91,14 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Point"))
         {
             ++score;
+            point.Play();
             Destroy(collision.gameObject);
         }
 
         if (collision.gameObject.CompareTag("Heart"))
         {
             ++life;
+            heart.Play();
             Destroy(collision.gameObject);
         }
     }
