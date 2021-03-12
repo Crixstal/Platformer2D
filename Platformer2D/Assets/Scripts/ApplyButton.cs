@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class ApplyButton : MonoBehaviour
 {
-    public void quit()
+    public void Quit()
     {
         Application.Quit();
     }
 
-    public void restart()
+    public void Restart()
     {
         SceneManager.LoadScene("SampleScene");
     }

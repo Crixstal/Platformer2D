@@ -6,14 +6,13 @@ using System;
 public class Player : MonoBehaviour
 {
     private Rigidbody rb;
+    public int life = 5;
+    public int score = 0;
     [SerializeField]
     private float moveSpeed = 8f;
     [SerializeField]
     private float jumpForce = 6f;
     private bool isJumping;
-    public int life = 5;
-    Vector3 velocity;
-    public int score = 0;
     public Vector3 checkpointPos;
 
     private void Awake()
@@ -38,7 +37,7 @@ public class Player : MonoBehaviour
             rb.AddForce(new Vector3(0.0f, 1.0f, 0.0f) * jumpForce, ForceMode.Impulse);
     }
 
-    public bool isAlive()
+    public bool IsAlive()
     {
         if (life <= 0)
             return false;
@@ -48,7 +47,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             if (collision.GetContact(0).normal == new Vector3(0f, 1f, 0f))
                 ++score;
@@ -60,22 +59,34 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.tag == "KillZone")
+        /*if (collision.gameObject.CompareTag("Boss")
+        {
+            if (collision.GetContact(0).normal == new Vector3(0f, 1f, 0f))
+                transform.position = new Vector3(checkpointPos.x, checkpointPos.y, transform.position.z);
+
+            else
+            {
+                --life;
+                transform.position = new Vector3(checkpointPos.x, checkpointPos.y, transform.position.z);
+            }
+        }*/
+
+        if (collision.gameObject.CompareTag("KillZone"))
         {
             --life;
             transform.position = new Vector3(checkpointPos.x, checkpointPos.y, transform.position.z);
         }
 
-        if (collision.gameObject.tag == "MovingPlatform")
+        if (collision.gameObject.CompareTag("MovingPlatform"))
             transform.SetParent(collision.transform);
 
-        if (collision.gameObject.tag == "Point")
+        if (collision.gameObject.CompareTag("Point"))
         {
             ++score;
             Destroy(collision.gameObject);
         }
 
-        if (collision.gameObject.tag == "Heart")
+        if (collision.gameObject.CompareTag("Heart"))
         {
             ++life;
             Destroy(collision.gameObject);
@@ -85,11 +96,14 @@ public class Player : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
         isJumping = false;
+        
+        if (collision.GetContact(0).normal.x == -1f || collision.GetContact(0).normal.x == 1f)
+            isJumping = true;
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "MovingPlatform")
+        if (collision.gameObject.CompareTag("MovingPlatform"))
             transform.SetParent(null);
 
         isJumping = true;

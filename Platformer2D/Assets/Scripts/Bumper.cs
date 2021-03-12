@@ -11,7 +11,7 @@ public class Bumper : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             if (collision.GetContact(0).normal == new Vector3(0f, -1f, 0f))
                 player.AddForce(new Vector3(0.0f, 1.0f, 0.0f) * jumpForce, ForceMode.Impulse);

@@ -20,7 +20,7 @@ public class CanvasManagement : MonoBehaviour
 
     void Update()
     {
-        playerIsAlive = player.isAlive();
+        playerIsAlive = player.IsAlive();
 
         if (playerIsAlive == false)
         {

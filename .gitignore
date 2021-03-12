@@ -10,14 +10,15 @@ Platformer2D/[Pp]ackages
 Platformer2D/[Mm]emoryCaptures/
 
 # Directories in Assets
-Platformer2D/[Aa]ssets/Models/
-Platformer2D/[Aa]ssets/Sounds/
-Platformer2D/[Aa]ssets/Textures/
 Platformer2D/[Aa]ssets/Animations/
-Platformer2D/[Aa]ssets/Materials/
-Platformer2D/[Aa]ssets/Prefabs/
 Platformer2D/[Aa]ssets/Images/
+Platformer2D/[Aa]ssets/Materials/
+Platformer2D/[Aa]ssets/Models/
+Platformer2D/[Aa]ssets/Physic Material/
+Platformer2D/[Aa]ssets/Prefabs/
+Platformer2D/[Aa]ssets/Sounds/
 Platformer2D/[Aa]ssets/TextMesh Pro/
+Platformer2D/[Aa]ssets/Textures/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !Platformer2D/[Aa]ssets/**/*.meta

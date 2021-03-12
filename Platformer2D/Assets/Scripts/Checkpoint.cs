@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    [SerializeField]
     private Renderer flag;
     private Material mat;
 
@@ -17,7 +16,7 @@ public class Checkpoint : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
             other.GetComponent<Player>().checkpointPos = transform.position;
             mat.color = Color.cyan;
