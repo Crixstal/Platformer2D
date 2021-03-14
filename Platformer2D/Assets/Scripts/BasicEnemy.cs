@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class BasicEnemy : MonoBehaviour
 {
-    [SerializeField]
     private float speed = 3f;
     private float distance;
     [SerializeField]
     private Transform start = null;
     [SerializeField]
     private Transform end = null;
+    [SerializeField]
+    private GameObject heart = null;
 
     void Update()
     {
@@ -22,8 +23,14 @@ public class BasicEnemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (collision.GetContact(0).normal == new Vector3(0f, -1f, 0f))
+            if (collision.GetContact(0).normal.y == -1f)
+            {
+                int rand = Random.Range(0, 4);
+                if(rand == 1)
+                    Instantiate(heart, transform.position, heart.transform.rotation);
+
                 Destroy(gameObject);
+            }
         }
     }
 }

@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class FollowingEnemy : MonoBehaviour
 {
-    [SerializeField]
-    private float speed = 5f;
+    private float speed = 4f;
     private float distance;
     private bool isTriggered;
-    //[SerializeField]
-    //private float force = 6f;
     [SerializeField]
     private Transform player = null;
     [SerializeField]
     private Transform start = null;
     [SerializeField]
     private Transform end = null;
+    [SerializeField]
+    private GameObject heart = null;
 
     void Update()
     {
@@ -30,8 +29,14 @@ public class FollowingEnemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (collision.GetContact(0).normal == new Vector3(0f, -1f, 0f))
+            if (collision.GetContact(0).normal.y == -1f)
+            { 
+                int rand = Random.Range(0, 2);
+                if (rand == 1)
+                    Instantiate(heart, transform.position, heart.transform.rotation);
+
                 Destroy(gameObject);
+            }
         }
     }
 

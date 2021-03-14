@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CanvasManagement : MonoBehaviour
 {
+    private bool playerIsAlive;
     [SerializeField]
     private GameObject HUD = null;
     [SerializeField]
     private GameObject GameOver = null;
-    private bool playerIsAlive;
     [SerializeField]
     private Player player = null;
 

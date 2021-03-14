@@ -18,7 +18,6 @@ Platformer2D/[Aa]ssets/Physic Material/
 Platformer2D/[Aa]ssets/Prefabs/
 Platformer2D/[Aa]ssets/Sounds/
 Platformer2D/[Aa]ssets/TextMesh Pro/
-Platformer2D/[Aa]ssets/Textures/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !Platformer2D/[Aa]ssets/**/*.meta

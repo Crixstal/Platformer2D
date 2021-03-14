@@ -8,9 +8,7 @@ public class Player : MonoBehaviour
     private Rigidbody rb;
     public int life = 5;
     public int score = 0;
-    [SerializeField]
     private float moveSpeed = 8f;
-    [SerializeField]
     private float jumpForce = 6f;
     private bool isJumping;
     public Vector3 checkpointPos;

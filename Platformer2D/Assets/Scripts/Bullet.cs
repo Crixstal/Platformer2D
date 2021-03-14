@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public Vector3 direction;
     private float speed = 5f;
+    public Vector3 direction;
     public bool isDestroyed;
 
     void Update()
