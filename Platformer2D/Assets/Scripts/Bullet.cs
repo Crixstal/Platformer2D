@@ -6,7 +6,6 @@ public class Bullet : MonoBehaviour
 {
     private float speed = 5f;
     public Vector3 direction;
-    public bool isDestroyed;
 
     void Update()
     {
@@ -15,13 +14,11 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        isDestroyed = true;
         Destroy(gameObject);
     }
 
     void OnBecameInvisible()
     {
-        isDestroyed = true;
         Destroy(gameObject);
     }
 }

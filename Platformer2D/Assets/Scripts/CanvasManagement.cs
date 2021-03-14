@@ -5,12 +5,15 @@ using UnityEngine;
 public class CanvasManagement : MonoBehaviour
 {
     private bool playerIsAlive;
+    private bool bossIsAlive;
     [SerializeField]
     private GameObject HUD = null;
     [SerializeField]
     private GameObject GameOver = null;
     [SerializeField]
     private Player player = null;
+    [SerializeField]
+    private Boss boss = null;
 
     void Awake()
     {
@@ -21,8 +24,9 @@ public class CanvasManagement : MonoBehaviour
     void Update()
     {
         playerIsAlive = player.IsAlive();
+        bossIsAlive = boss.IsAlive();
 
-        if (playerIsAlive == false)
+        if (!playerIsAlive || !bossIsAlive)
         {
             HUD.SetActive(false);
             GameOver.SetActive(true);

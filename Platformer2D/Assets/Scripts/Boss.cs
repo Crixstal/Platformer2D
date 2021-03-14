@@ -6,12 +6,10 @@ public class Boss : MonoBehaviour
 {
     [SerializeField]
     private int life = 5;
-    [SerializeField]
-    private float speed = 3f;
+    private float speed = 8f;
     private float distance;
     private float startTimer;
-    [SerializeField]
-    private float duration = 1f;
+    private float duration = 2f;
     [SerializeField]
     private float repulseForce = 10f;
     [SerializeField]
@@ -53,11 +51,6 @@ public class Boss : MonoBehaviour
         }      
         
         bullet.GetComponent<Bullet>().direction = Vector3.Normalize(player.position - bullet.transform.position);
-        
-        if (bullet.GetComponent<Bullet>().isDestroyed)
-            transform.GetChild(11).gameObject.SetActive(true);
-        else
-            transform.GetChild(11).gameObject.SetActive(false);
     }
 
     private void Life()
@@ -89,6 +82,14 @@ public class Boss : MonoBehaviour
         }
     }
 
+    public bool IsAlive()
+    {
+        if (life <= 0)
+            return false;
+
+        return true;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -96,7 +97,7 @@ public class Boss : MonoBehaviour
             if (collision.GetContact(0).normal == new Vector3(0f, -1f, 0f))
             {
                 --life;
-                player.AddForce(new Vector3(1.0f, 0.5f, 0.0f) * repulseForce, ForceMode.Impulse);
+                player.AddForce(new Vector3(0f, 0.8f, 0f) * repulseForce, ForceMode.Impulse);
             }
         }
     }

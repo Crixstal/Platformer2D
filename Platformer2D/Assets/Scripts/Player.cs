@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.CompareTag("Boss"))
+        /*if (collision.gameObject.CompareTag("Boss"))
         {
             if (collision.GetContact(0).normal != new Vector3(0f, 1f, 0f))
             { 
@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
             --life;
             transform.position = new Vector3(checkpointPos.x, checkpointPos.y, transform.position.z);
         }
-
+        */
         if (collision.gameObject.CompareTag("MovingPlatform"))
             transform.SetParent(collision.transform);
 
