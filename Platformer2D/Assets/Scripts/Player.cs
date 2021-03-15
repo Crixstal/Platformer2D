@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            if (collision.GetContact(0).normal == new Vector3(0f, 1f, 0f))
+            if (collision.GetContact(0).normal.y >= 0.8f)
             {
                 error.Play();
                 ++score;
@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        /*if (collision.gameObject.CompareTag("Boss"))
+        if (collision.gameObject.CompareTag("Boss"))
         {
             if (collision.GetContact(0).normal != new Vector3(0f, 1f, 0f))
             { 
@@ -82,23 +82,9 @@ public class Player : MonoBehaviour
             --life;
             transform.position = new Vector3(checkpointPos.x, checkpointPos.y, transform.position.z);
         }
-        */
+        
         if (collision.gameObject.CompareTag("MovingPlatform"))
             transform.SetParent(collision.transform);
-
-        if (collision.gameObject.CompareTag("Point"))
-        {
-            ++score;
-            point.Play();
-            Destroy(collision.gameObject);
-        }
-
-        if (collision.gameObject.CompareTag("Heart"))
-        {
-            ++life;
-            heart.Play();
-            Destroy(collision.gameObject);
-        }
     }
 
     private void OnCollisionStay(Collision collision)
@@ -115,5 +101,22 @@ public class Player : MonoBehaviour
             transform.SetParent(null);
 
         isJumping = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Point"))
+        {
+            ++score;
+            point.Play();
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("Heart") && life < 5)
+        {
+            ++life;
+            heart.Play();
+            Destroy(other.gameObject);
+        }
     }
 }

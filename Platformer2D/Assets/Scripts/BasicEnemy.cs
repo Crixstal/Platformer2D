@@ -23,7 +23,7 @@ public class BasicEnemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (collision.GetContact(0).normal.y == -1f)
+            if (collision.GetContact(0).normal.y <= -0.8f)
             {
                 int rand = Random.Range(0, 4);
                 if(rand == 1)
