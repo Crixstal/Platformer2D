@@ -15,7 +15,7 @@ The project objective's is to create a 2D platformer game using Unity.
 
 ## **Informations**
 
-In the zip file "Build+Assets" you can find :
+The build and the assets can be found in the zip file "Build+Assets" under the GOLD release:
 - "Platformer2D.exe" to launch the game is in the "Build" folder
 - all the assets are in the "asset" folder :
     - Animations
