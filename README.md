@@ -1,4 +1,4 @@
-# **Platformer 2D by Manon MÉHALIN**
+# **Platformer 2D**
 
 ## **Summary**
 - [Description](#Description)
