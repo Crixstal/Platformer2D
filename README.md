@@ -1,9 +1,9 @@
 # **Platformer 2D by Manon MÉHALIN**
 
 ## **Summary**
-- [Description](##Description)
-- [Informations](##Informations)
-- [Commands](##Commands)
+- [Description](#Description)
+- [Informations](#Informations)
+- [Commands](#Commands)
 
 <br>
 
@@ -39,3 +39,7 @@ A / Left arrow  | Move left
 D / Right arrow | Move Right
 Space bar       | Jump
 Esc             | Close the program
+
+<br>
+
+[Head of page](#Summary)
