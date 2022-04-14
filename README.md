@@ -1,15 +1,8 @@
 # **Platformer 2D**
 
 ## **Summary**
-- [Description](#Description)
 - [Informations](#Informations)
 - [Commands](#Commands)
-
-<br>
-
-## **Description**
-
-The project objective's is to create a 2D platformer game using Unity.
 
 <br>
 
