@@ -1,23 +1,16 @@
 # **Platformer 2D**
 
+https://user-images.githubusercontent.com/91843760/205076247-ddf3941c-58aa-4c7b-8fe9-655c08c06340.mp4
+
 ## **Summary**
-- [Informations](#Informations)
-- [Commands](#Commands)
+- [Informations](#informations)
+- [Commands](#commands)
 
 <br>
 
 ## **Informations**
 
-The build and the assets can be found in the zip file "Build+Assets" under the GOLD release:
-- "Platformer2D.exe" to launch the game is in the "Build" folder
-- all the assets are in the "asset" folder :
-    - Animations
-    - Images
-    - Materials
-    - Models
-    - Physic Material
-    - Sounds
-    - TextMesh Pro
+The build and the assets can be found in the zip file "Build+Assets" under the GOLD release.
 
 <br>
 
@@ -35,4 +28,4 @@ Esc             | Close the program
 
 <br>
 
-[Head of page](#Summary)
+[Top of page](#summary)
