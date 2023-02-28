@@ -5,6 +5,7 @@
 https://user-images.githubusercontent.com/91843760/205076247-ddf3941c-58aa-4c7b-8fe9-655c08c06340.mp4
 
 ## **Informations**
+
 This project was my very first on Unity, the goal was to get familiar with the engine by making a simple game.
 
 ## **Controls - Keyboard (QWERTY)**
